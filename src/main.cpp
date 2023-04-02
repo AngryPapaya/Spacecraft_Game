@@ -6,12 +6,15 @@
 int main()
 {
     bool game_over = false;
-    SpaceCraft sc(7, 7);
+    SpaceCraft sc(7, 7, 3, 3);
     hideCursor();
+    printGameLimits();
     sc.printShip();
+    sc.printHealth();
 
     while (!game_over)
     {
+        sc.deathFunction();
         sc.moveShip();
         Sleep(30); // Delay to simulate animation speed
     }
