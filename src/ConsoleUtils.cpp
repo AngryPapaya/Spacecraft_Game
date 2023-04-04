@@ -28,7 +28,6 @@ void printGameLimits()
     char topRight = 187;
     char bottomRight = 188;
 
-    // Print top and bottom borders
     for (int i = 2; i < 78; i++)
     {
         gotoxy(i, 3);
@@ -38,7 +37,6 @@ void printGameLimits()
         printf("%c", horizontal);
     }
 
-    // Print left and right borders
     for (int i = 4; i < 33; i++)
     {
         gotoxy(2, i);
@@ -48,7 +46,6 @@ void printGameLimits()
         printf("%c", vertical);
     }
 
-    // Print corner symbols
     gotoxy(2, 3);
     printf("%c", topLeft);
 

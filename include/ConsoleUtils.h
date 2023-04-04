@@ -7,4 +7,4 @@ void hideCursor();
 
 void printGameLimits();
 
-#endif //CONSOLEUTILS_H
+#endif
