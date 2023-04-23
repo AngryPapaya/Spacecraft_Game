@@ -2,6 +2,7 @@
 #include "ConsoleUtils.h"
 #include "Asteroid.h"
 #include "Shot.h"
+#include <stdio.h>
 #include <windows.h>
 #include <conio.h>
 #include <list>
@@ -11,14 +12,18 @@ int main()
 {
     bool game_over = false;
 
-    SpaceCraft sc(7, 7, 3, 3);
+    SpaceCraft sc(37, 30, 3, 3);
 
-    Asteroid ast_1(10, 4);
-    Asteroid ast_2(4, 8);
-    Asteroid ast_3(15, 10);
+    list<Asteroid *> a;
+    list<Asteroid *>::iterator itA;
+
+    for (int i = 0; i < 5; ++i)
+    {
+        a.push_back(new Asteroid(rand() % 75 + 3, rand() % 5 + 4));
+    }
 
     list<Shot *> s;
-    list<Shot *>::iterator it;
+    list<Shot *>::iterator itS;
 
     hideCursor();
     printGameLimits();
@@ -37,19 +42,23 @@ int main()
             }
         }
 
-        for (it = s.begin(); it != s.end(); it++)
+        for (itS = s.begin(); itS != s.end(); itS++)
         {
-            (*it)->moveShot();
+            (*itS)->moveShot();
+            if ((*itS)->out())
+            {
+                gotoxy((*itS)->X(), (*itS)->Y());
+                printf(" ");
+                delete (*itS);
+                itS = s.erase(itS);
+            }
         }
 
-        ast_1.moveAsteroid();
-        ast_1.hit(sc);
-
-        ast_2.moveAsteroid();
-        ast_2.hit(sc);
-
-        ast_3.moveAsteroid();
-        ast_3.hit(sc);
+        for (itA = a.begin(); itA != a.end(); itA++)
+        {
+            (*itA)->moveAsteroid();
+            (*itA)->hit(sc);
+        }
 
         sc.deathFunction();
         sc.moveShip();

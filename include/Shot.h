@@ -7,6 +7,9 @@ public:
     Shot(int _x, int _y);
 
     void moveShot();
+    bool out();
+    int X();
+    int Y();
 
 private:
     int x;
