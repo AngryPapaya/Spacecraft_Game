@@ -13,6 +13,7 @@ public:
     void deathFunction();
     int X();
     int Y();
+    int getLifeCounter();
     void loseHealth();
 
 private:

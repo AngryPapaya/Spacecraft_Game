@@ -11,6 +11,7 @@ using namespace std;
 int main()
 {
     bool game_over = false;
+    int score = 0;
 
     SpaceCraft sc(37, 30, 3, 3);
 
@@ -33,6 +34,8 @@ int main()
 
     while (!game_over)
     {
+        gotoxy(4, 2);
+        printf("Score %d", score);
         if (kbhit())
         {
             char key = getch();
@@ -73,8 +76,14 @@ int main()
                     printf(" ");
                     delete(*itA);
                     itA = a.erase(itA);
+
+                    score += 5;
                 }
             }
+        }
+
+        if (sc.getLifeCounter() == 0) {
+            game_over = true;
         }
 
         sc.deathFunction();

@@ -151,3 +151,8 @@ int SpaceCraft::Y()
 {
     return y;
 }
+
+int SpaceCraft::getLifeCounter()
+{
+    return lifeCounter;
+}
