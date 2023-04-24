@@ -19,7 +19,7 @@ int main()
 
     for (int i = 0; i < 5; ++i)
     {
-        a.push_back(new Asteroid(rand() % 75 + 3, rand() % 5 + 4));
+        a.push_back(new Asteroid(rand() % 74 + 3, rand() % 5 + 4));
     }
 
     list<Shot *> s;
@@ -58,6 +58,23 @@ int main()
         {
             (*itA)->moveAsteroid();
             (*itA)->hit(sc);
+        }
+
+        for (itA = a.begin(); itA != a.end(); itA++) {
+            for (itS = s.begin(); itS != s.end(); itS++) {
+                if ((*itA)->X() == (*itS)->X() && ((*itA)->Y() + 1 == (*itS)->Y() || (*itA)->Y() == (*itS)->Y())) {
+                    gotoxy((*itS)->X(), (*itS)->Y());
+                    printf(" ");
+                    delete(*itS);
+                    itS = s.erase(itS);
+
+                    a.push_back(new Asteroid(rand() % 74 + 3, 4));
+                    gotoxy((*itA)->X(), (*itA)->Y());
+                    printf(" ");
+                    delete(*itA);
+                    itA = a.erase(itA);
+                }
+            }
         }
 
         sc.deathFunction();

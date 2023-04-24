@@ -41,3 +41,13 @@ void Asteroid::hit(class SpaceCraft &sc)
         y = 4;
     }
 }
+
+int Asteroid::X()
+{
+    return x;
+}
+
+int Asteroid::Y()
+{
+    return y;
+}

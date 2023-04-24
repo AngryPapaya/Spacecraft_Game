@@ -9,6 +9,8 @@ public:
     void printAsteroid();
     void moveAsteroid();
     void hit(class SpaceCraft &sc);
+    int X();
+    int Y();
 
 private:
     int x;
